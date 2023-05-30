@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nasa-url
+data:
+  url: https://api.nasa.gov/planetary/apod
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: fetch-apod
+  labels:
+    name: fetch-apod
+spec:
+  containers:
+    - name: main
+      image: busybox
+      command: ["/bin/sh", "-c"]
+      args: ["echo $URL $TOKEN"]
+      env:
+        - name: URL
+          valueFrom:
+            configMapKeyRef:
+              name: nasa-url
+              key: url
+        - name: TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: nasa-token
+              key: token
