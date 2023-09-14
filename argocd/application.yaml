@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/Blase-ssa/Kubernetes.git
     targetRevision: dev
-    path: argocd
+    path: argocd/dev
   destination:
     server: https://kubernetes.default.svc
     namespace: myapp
