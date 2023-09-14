@@ -13,10 +13,10 @@ spec:
     spec:
       containers:
       - name: myapp
-        image: <Image>
+        image: nginx #scorpioncore/blase-infra:tagname
         resources:
           limits:
             memory: "128Mi"
             cpu: "500m"
         ports:
-        - containerPort: 8080
+        - containerPort: 80
